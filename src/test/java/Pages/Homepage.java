@@ -7,12 +7,13 @@ import com.opencsv.exceptions.CsvValidationException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 
@@ -114,12 +115,12 @@ public class Homepage extends BasePage {
     }
 
     public Homepage checkRefresh() {
-        System.out.println(findElement(REFRESH_TITLE).isDisplayed());
+        new WebDriverWait(BaseTest.driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(REFRESH_TITLE));
         log.info("**************** Refresh pop-up seen ***************");
         return this;
     }
 
-    public Homepage cleanCart(){
+    public Homepage cleanCart() {
         click(CLEAR_CART);
         log.info("**************** Cart Cleaned ***************");
         return this;

@@ -13,7 +13,7 @@ public class Constants {
     public static final By GO_BASKET_BUTTON = By.id("js-cart");
     public static final By PRODUCT_COUNT_INCREASE = By.xpath("(//input[@name='quantity'])");
     public static final By REFRESH_BUTTON = By.xpath("//i[@title='Güncelle']");
-    public static final By REFRESH_TITLE = By.id("swal2-title");
+    public static final By REFRESH_TITLE = By.xpath("//div[@role='alert']");
     public static final By REFRESH_TITLE_CLOSE = By.xpath("//button[normalize-space()='×']");
     public static final By CLEAR_CART = By.xpath("//i[@title='Kaldır']");
 
