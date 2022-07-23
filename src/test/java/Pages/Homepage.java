@@ -4,6 +4,8 @@ import Base.BasePage;
 import Base.BaseTest;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 
 import org.openqa.selenium.WebDriver;
@@ -17,10 +19,14 @@ import java.util.Random;
 
 import static Constants.Constants.*;
 
+
 public class Homepage extends BasePage {
+
     public Homepage(WebDriver driver) {
         super(driver);
     }
+
+    private static Logger log = LogManager.getLogger(Homepage.class);
 
     public Homepage goToHomePage() {
         goUrl(URL);
@@ -31,6 +37,7 @@ public class Homepage extends BasePage {
         String title = BaseTest.driver.getTitle();
         System.out.println("Page Title" + title);
         Assert.assertTrue(title.contains("Kitapyurdu,"));
+        log.info("**************** Test started ****************");
         return this;
 
     }
@@ -48,7 +55,7 @@ public class Homepage extends BasePage {
             }
         }
         enter(SEARCH_BOX);
-
+        log.info("**************** Book searched ***************");
         return this;
     }
 
@@ -59,16 +66,20 @@ public class Homepage extends BasePage {
         links.get(number).getText();
         links.get(number).click();
         findElement(DETAIL_NAME).getText();
+        log.info("**************** Book selected ***************");
         return this;
     }
 
     public Homepage addToBasket() {
         click(ADD_TO_CART);
+        log.info("**************** Book added Cart ***************");
         return this;
     }
 
     public boolean isProductCountUp() {
+        log.info("**************** Checked Cart Count***************");
         return getCartCount() > 0;
+
     }
 
 
@@ -84,21 +95,24 @@ public class Homepage extends BasePage {
 
     public Homepage goToBasket() {
         click(GO_BASKET_BUTTON);
+        log.info("**************** Went to Cart ***************");
         return this;
     }
 
     public Homepage increaseProductCount() {
         click(PRODUCT_COUNT_INCREASE);
         sendKeys(PRODUCT_COUNT_INCREASE, "1");
+        log.info("**************** Added 1 more same book ***************");
         return this;
     }
 
     public Homepage refreshCart() {
         click(REFRESH_BUTTON);
+        log.info("**************** Cart Refreshed ***************");
         return this;
     }
 
-    public Homepage checkRefresh(){
+    public Homepage checkRefresh() {
         System.out.println(findElement(REFRESH_TITLE).isDisplayed());
         click(REFRESH_TITLE_CLOSE);
         return this;

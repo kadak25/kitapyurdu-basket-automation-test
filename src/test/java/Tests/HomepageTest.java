@@ -5,11 +5,10 @@ import Pages.Homepage;
 import com.opencsv.exceptions.CsvValidationException;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import testlogger.TestResultLogger;
+
 
 import java.io.IOException;
-@ExtendWith(TestResultLogger.class)
+
 public class HomepageTest extends BaseTest {
     Homepage homepage;
 
