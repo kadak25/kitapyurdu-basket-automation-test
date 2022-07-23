@@ -98,4 +98,10 @@ public class Homepage extends BasePage {
         return this;
     }
 
+    public Homepage checkRefresh(){
+        System.out.println(findElement(REFRESH_TITLE).isDisplayed());
+        click(REFRESH_TITLE_CLOSE);
+        return this;
+    }
+
 }

@@ -16,6 +16,6 @@ public class HomepageTest extends BaseTest{
     @Test
     public void homePageTest() throws CsvValidationException, IOException {
         homepage.goToHomePage().validateHomePage().search().randomProductSelect().addToBasket().isProductCountUp();
-        homepage.goToBasketDropdown().goToBasket().increaseProductCount().refreshCart();
+        homepage.goToBasketDropdown().goToBasket().increaseProductCount().refreshCart().checkRefresh();
     }
 }
