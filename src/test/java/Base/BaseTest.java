@@ -6,12 +6,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
+import testlogger.TestResultLogger;
 
 @ExtendWith(TestResultLogger.class)
 public class BaseTest {
 
     public static WebDriver driver;
+
 
     @Before
     public void setUp() {

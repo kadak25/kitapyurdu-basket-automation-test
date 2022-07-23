@@ -1,15 +1,17 @@
 package Base;
 
+
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
 
 public class BasePage extends BaseTest {
+
     WebDriver driver;
-    WebDriverWait webDriverWait;
+
+
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -50,11 +52,6 @@ public class BasePage extends BaseTest {
         return driver.findElements(by);
     }
 
-    public void scrollToElement(By by) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", findElement(by));
-
-    }
 
 }
 

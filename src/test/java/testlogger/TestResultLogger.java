@@ -1,6 +1,6 @@
-package Base;
+package testlogger;
 
-import Log4j.Log;
+import logger.Log;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 
@@ -19,7 +19,7 @@ public class TestResultLogger implements TestWatcher {
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
         String testName = context.getDisplayName();
-        String testFailCause = cause.getMessage();
+        String testFailCause = cause.getMessage() ;
         log.error(testName + " FAILED with cause : " + testFailCause);
     }
 
