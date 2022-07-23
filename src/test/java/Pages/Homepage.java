@@ -7,10 +7,9 @@ import com.opencsv.exceptions.CsvValidationException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,6 +20,7 @@ import static Constants.Constants.*;
 
 
 public class Homepage extends BasePage {
+
 
     public Homepage(WebDriver driver) {
         super(driver);
@@ -44,7 +44,7 @@ public class Homepage extends BasePage {
 
 
     public Homepage search() throws CsvValidationException, IOException {
-        click(SEARCH_BOX);
+        waitAndClick(SEARCH_BOX);
         String CSVfile = "CSVdatafiles/books_new.csv";
         CSVReader reader = new CSVReader(new FileReader(CSVfile));
         String[] cell;
@@ -71,8 +71,9 @@ public class Homepage extends BasePage {
     }
 
     public Homepage addToBasket() {
-        click(ADD_TO_CART);
+        waitAndClick(ADD_TO_CART);
         log.info("**************** Book added Cart ***************");
+
         return this;
     }
 
@@ -89,33 +90,40 @@ public class Homepage extends BasePage {
     }
 
     public Homepage goToBasketDropdown() {
-        click(CART_COUNT);
+        waitAndClick(BASKET_DROPDOWN);
         return this;
     }
 
     public Homepage goToBasket() {
-        click(GO_BASKET_BUTTON);
+        waitAndClick(GO_BASKET_BUTTON);
         log.info("**************** Went to Cart ***************");
         return this;
     }
 
     public Homepage increaseProductCount() {
-        click(PRODUCT_COUNT_INCREASE);
-        sendKeys(PRODUCT_COUNT_INCREASE, "1");
+        waitAndClick(PRODUCT_COUNT_INCREASE);
+        sendKeys(PRODUCT_COUNT_INCREASE, "2");
         log.info("**************** Added 1 more same book ***************");
         return this;
     }
 
     public Homepage refreshCart() {
-        click(REFRESH_BUTTON);
+        waitAndClick(REFRESH_BUTTON);
         log.info("**************** Cart Refreshed ***************");
         return this;
     }
 
     public Homepage checkRefresh() {
         System.out.println(findElement(REFRESH_TITLE).isDisplayed());
-        click(REFRESH_TITLE_CLOSE);
+        log.info("**************** Refresh pop-up seen ***************");
         return this;
     }
+
+    public Homepage cleanCart(){
+        click(CLEAR_CART);
+        log.info("**************** Cart Cleaned ***************");
+        return this;
+    }
+
 
 }

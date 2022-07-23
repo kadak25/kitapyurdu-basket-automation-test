@@ -1,33 +1,27 @@
 package Base;
 
-
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
+import java.time.Duration;
 import java.util.List;
 
 
 public class BasePage extends BaseTest {
 
     WebDriver driver;
-
-
+    WebDriverWait webDriverWait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-
+        this.webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
+
 
     public void goUrl(String url) {
         driver.get(url);
-    }
-
-    public String currentUrl() {
-        return driver.getCurrentUrl();
-    }
-
-    public void pressEnter(By by) {
-        driver.findElement(by).sendKeys(Keys.ENTER);
     }
 
     public WebElement findElement(By by) {
@@ -36,7 +30,11 @@ public class BasePage extends BaseTest {
 
     public void click(By by) {
         findElement(by).click();
+    }
 
+    public void waitAndClick(By by){
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(by));
+        findElement(by).click();
     }
 
     public void enter(By by) {
